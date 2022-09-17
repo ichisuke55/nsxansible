@@ -99,10 +99,10 @@ def main():
     ippool_config = get_ippool_details(s, ip_pool_objectid)
     change_required = False
 
-    for ippool_detail_key, ippool_detail_value in ippool_config['ipamAddressPool'].items():
+    for ippool_detail_key, ippool_detail_value in ippool_config['ipamAddressPool'].iteritems():
         if ippool_detail_key == 'ipRanges':
             for range_detail_key, range_detail_value in \
-                    ippool_config['ipamAddressPool']['ipRanges']['ipRangeDto'].items():
+                    ippool_config['ipamAddressPool']['ipRanges']['ipRangeDto'].iteritems():
                 if range_detail_key == 'startAddress' and range_detail_value != module.params['start_ip']:
                     ippool_config['ipamAddressPool']['ipRanges']['ipRangeDto']['startAddress'] = \
                         module.params['start_ip']

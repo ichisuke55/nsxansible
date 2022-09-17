@@ -75,7 +75,7 @@ def create_dlr(client_session, module):
                                                   'remoteAccess': module.params['remote_access'],
                                                   'userName': module.params['username']}
     initial_intf = []
-    for iface_key, iface in list(ifaces.items()):
+    for iface_key, iface in ifaces.items():
         connected_to = None
         if 'portgroup_id' in iface:
             connected_to = iface['portgroup_id']
@@ -274,7 +274,7 @@ def check_interfaces(client_session, dlr_id, module):
         intf_deletion = None
         idx = intf['name']
         ifindex = intf['index']
-        if idx in list(ifaces.keys()):
+        if idx in ifaces.keys():
             continue
         if 'connectedToId' in intf:
             intf_deletion = True
@@ -291,7 +291,7 @@ def check_interfaces(client_session, dlr_id, module):
         intf_changed = None
         idx = intf['name']
         ifindex = intf['index']
-        if idx not in list(ifaces.keys()):
+        if idx not in ifaces.keys():
             continue
 
         if intf['type'] != ifaces[idx]['iftype']:
@@ -337,7 +337,7 @@ def check_interfaces(client_session, dlr_id, module):
                                   request_body_dict=intfs_update)
             changed = True
 
-    for iface_key, iface in list(ifaces.items()):
+    for iface_key, iface in ifaces.items():
         if iface_key not in intfs_namelist:
             connected_to = None
             if 'portgroup_id' in iface:

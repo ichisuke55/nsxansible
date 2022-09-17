@@ -120,7 +120,7 @@ def state_check_scope_update(session, module):
     changed_property = False
     changed_cluster_list = False
 
-    for property_key in list(vdn_props.keys()):
+    for property_key in vdn_props.keys():
         if property_key == 'cluster_moid_list':
             if set(vdn_props['cluster_moid_list']) != set(module.params[property_key]):
                 changed_cluster_list = True

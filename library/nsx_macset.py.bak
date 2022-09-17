@@ -75,7 +75,7 @@ def main():
         # Update existing macset
         macset_details = get_macset_details(client_session, macset_id_lst[0])
         change_required = False
-        for detail_key, detail_val in macset_details['macset'].items():
+        for detail_key, detail_val in macset_details['macset'].iteritems():
             if detail_key == 'description' and detail_val != module.params['description']:
                 macset_details['macset']['description'] = module.params['description']
                 change_required = True

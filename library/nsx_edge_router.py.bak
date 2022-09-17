@@ -101,7 +101,7 @@ def create_init_ifaces(client_session, module):
     params_check_ifaces(module)
     vnics_info = []
 
-    for iface_key, iface in list(ifaces.items()):
+    for iface_key, iface in ifaces.items():
         iface_index = iface_key[-1:]
         portgroup_id = None
         if 'portgroup_id' in iface:
@@ -193,7 +193,7 @@ def params_check_ifaces(module):
     ifaces = module.params['interfaces']
     if not isinstance(ifaces, dict):
         module.fail_json(msg='Malformed Interfaces Dictionary: The Interfaces Information is not a dictionary')
-    for iface_key, iface in list(ifaces.items()):
+    for iface_key, iface in ifaces.items():
         if not isinstance(iface, dict):
             module.fail_json(msg='Malformed Interface Dictionary: '
                                  'The Interface {} Information is not a dictionary'.format(iface_key))

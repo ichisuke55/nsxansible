@@ -32,7 +32,7 @@ from ansible.module_utils.basic import *
 def get_user_role(client_session, user_id):
     """
     :param client_session: An instance of an NsxClient session
-    :param user_id: The userId. To specify a domain user, use user@domain not domain\\user
+    :param user_id: The userId. To specify a domain user, use user@domain not domain\user
     """
 
     cfg_result = client_session.read('userRoleMgmt', uri_parameters={'userId': user_id})
@@ -42,7 +42,7 @@ def get_user_role(client_session, user_id):
 def update_user_role(client_session, user_id, role_type):
     """
     :param client_session: An instance of an NsxClient session
-    :param user_id: The userId. To specify a domain user, use user@domain not domain\\user
+    :param user_id: The userId. To specify a domain user, use user@domain not domain\user
     :param role_type: Users assigned role. Possible roles are super_user, vshield_admin, enterprise_admin, security_admin, auditor
     """
 
@@ -59,7 +59,7 @@ def update_user_role(client_session, user_id, role_type):
 def create_user_role(client_session, user_id, role_type, is_group):
     """
     :param client_session: An instance of an NsxClient session
-    :param user_id: The userId. To specify a domain user, use user@domain not domain\\user
+    :param user_id: The userId. To specify a domain user, use user@domain not domain\user
     :param role_type: Users assigned role. Possible roles are super_user, vshield_admin, enterprise_admin, security_admin, auditor
     :param is_group: Query parameter. True to apply to a group, false to apply to a user. Default is false.
     """
@@ -78,7 +78,7 @@ def create_user_role(client_session, user_id, role_type, is_group):
 def delete_user_role(client_session, user_id):
     """
     :param client_session: An instance of an NsxClient session
-    :param user_id: The userID. To specify a domain user, use user@domain not domain\\user
+    :param user_id: The userID. To specify a domain user, use user@domain not domain\user
     """
 
     cfg_result = client_session.delete('userRoleMgmt', uri_parameters={'userId': user_id})

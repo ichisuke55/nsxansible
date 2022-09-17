@@ -65,7 +65,7 @@ def create_init_nat_rules(client_session, module):
     nat_rules_info = {}
     nat_rules_info['natRule'] = []
 
-    for rule_key, nat_rule in list(nat_rules.items()):
+    for rule_key, nat_rule in nat_rules.items():
         rules_index = rule_key[-1:]
         rule_type = nat_rule['rule_type']
         if rule_type == 'snat':
@@ -96,7 +96,7 @@ def params_check_nat_rules(module):
     nat_rules = module.params['rules']
     if not isinstance(nat_rules, dict):
         module.fail_json(msg='Malformed NAT Rules dictionary')
-    for rule_key, nat_rule in list(nat_rules.items()):
+    for rule_key, nat_rule in nat_rules.items():
         if not isinstance(nat_rule, dict):
             module.fail_json(msg='Malformed NAT Rule dictionary: {}'.format(rule_key))
         rule_type = nat_rule.get('rule_type', None)

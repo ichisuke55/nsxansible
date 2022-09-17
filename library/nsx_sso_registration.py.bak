@@ -90,7 +90,7 @@ def main():
     sso_config = retrieve_sso_config(s)
     change_required = False
 
-    for ssoconfig_detail_key, ssoconfig_detail_value in sso_config['ssoConfig'].items():
+    for ssoconfig_detail_key, ssoconfig_detail_value in sso_config['ssoConfig'].iteritems():
         if ssoconfig_detail_key == 'ssoAdminUsername' and ssoconfig_detail_value != module.params['sso_admin_username']:
             sso_config['ssoConfig']['ssoAdminUsername'] = module.params['sso_admin_username']
             change_required = True

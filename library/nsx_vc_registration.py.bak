@@ -73,7 +73,7 @@ def main():
     if module.params['accept_all_certs']:
         module.params['vccertthumbprint'] = api_cert_thumbp
 
-    if 'ipAddress' not in list(vc_config['vcInfo'].keys()):
+    if 'ipAddress' not in vc_config['vcInfo'].keys():
         change_required = True
         vc_config['vcInfo']['userName'] = module.params['vcusername']
         vc_config['vcInfo']['ipAddress'] = module.params['vcenter']
@@ -81,7 +81,7 @@ def main():
     else:
        change_required = False
 
-    for vcconfig_detail_key, vcconfig_detail_value in vc_config['vcInfo'].items():
+    for vcconfig_detail_key, vcconfig_detail_value in vc_config['vcInfo'].iteritems():
         if vcconfig_detail_key == 'userName' and vcconfig_detail_value != module.params['vcusername']:
             vc_config['vcInfo']['userName'] = module.params['vcusername']
             change_required = True
